@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:fontFamily="@font/trebuc"
+        android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal"
         />
