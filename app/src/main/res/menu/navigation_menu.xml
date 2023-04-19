@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_about"
+        android:title="My Profile" />
+
+    <item
+        android:id="@+id/nav_contact"
+        android:icon="@drawable/ic_contact"
+        android:title="Contact us" />
+
+    <item
+        android:id="@+id/nav_reminder"
+        android:icon="@drawable/ic_alarm"
+        android:title="Medicine Reminder" />
+
+    <item
+        android:id="@+id/nav_policy"
+        android:icon="@drawable/ic_privacy"
+        android:title="Privacy Policy" />
+
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_share"
+        android:title="Share" />
+
+    <item
+        android:id="@+id/nav_rate"
+        android:icon="@drawable/ic_rate"
+        android:title="Rate us" />
+
+    <item
+        android:id="@+id/nav_apps"
+        android:icon="@drawable/ic_apps"
+        android:title="Our Apps" />
+
+</menu>

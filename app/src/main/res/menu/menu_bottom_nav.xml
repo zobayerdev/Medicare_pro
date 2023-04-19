@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_menu_home"
+        android:fontFamily="@font/tinos_bold"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/bottom_menu_dev"
+        android:fontFamily="@font/tinos_bold"
+        android:icon="@drawable/ic_image"
+        android:title="Prescription" />
+
+    <item
+        android:id="@+id/bottom_menu_about"
+        android:fontFamily="@font/tinos_bold"
+        android:icon="@drawable/ic_about"
+        android:title="About us" />
+
+</menu>
