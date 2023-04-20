@@ -142,7 +142,7 @@
                 android:layout_height="150dp"
                 android:gravity="start"
                 android:fontFamily="@font/sf_ns_text"
-                android:hint="Dosage &amp; Administration"
+                android:hint="Precautions &amp; warnings"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
