@@ -26,7 +26,7 @@ public class AddMedicineActivity extends AppCompatActivity {
     private EditText nameEt, shortDesEt, indicatorsEt, dosagesEt, interactionEt, effectEt, warningsEt, conditionEt;
 
     private Spinner AddCategory;
-    private Button uploadBtn ;
+    private Button uploadBtn;
     private final int REQ = 1;
     private Bitmap bitmap = null;
     private String category;
@@ -64,12 +64,12 @@ public class AddMedicineActivity extends AppCompatActivity {
         String[] items = new String[]{"Select Category", "Powder for suspension", "Capsules ", "Tablet", "Ointment", "Inhaler", "Drops", "Suppositories", "Injection "};
         AddCategory.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items));
 
-        
+
         AddCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // eikhane change ache AddStudentCategory
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                category = AddCategory.getSelectedItem().toString(); // eikhane change ache AddStudentCategory
+                category = AddCategory.getSelectedItem().toString();
             }
 
             @Override
