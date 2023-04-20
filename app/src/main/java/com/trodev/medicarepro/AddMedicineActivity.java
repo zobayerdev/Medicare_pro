@@ -4,14 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.trodev.medicarepro.models.MedicineModels;
+import com.trodev.medicarepro.models.MedicineData;
 
 import java.util.Objects;
 
@@ -125,12 +128,12 @@ public class AddMedicineActivity extends AppCompatActivity {
             conditionEt.requestFocus();
         } else if (category.equals("Select Category")) {
             Toast.makeText(this, "Please provides teacher category", Toast.LENGTH_SHORT).show();
-        } else if (bitmap == null) {
-            insertData();
-        } else {
+        }
+        else {
             progressDialog.setMessage("Uploading Details");
             progressDialog.show();
             //   uploadImage();
+            insertData();
         }
     }
 
@@ -148,8 +151,8 @@ public class AddMedicineActivity extends AppCompatActivity {
 
         // #########################
         //  upload data on database and use model data getter and setter method.
-        MedicineModels medicineModels = new MedicineModels(name, description, indicators, dosages, interaction, warnings, conditions, effect, uniquekey);
-        dbRef.child(uniquekey).setValue(medicineModels).addOnSuccessListener(new OnSuccessListener<Void>() {
+        MedicineData medicineData = new MedicineData(name, description, indicators, dosages, interaction, warnings, conditions, effect, uniquekey);
+        dbRef.child(uniquekey).setValue(medicineData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 progressDialog.dismiss();
@@ -164,4 +167,22 @@ public class AddMedicineActivity extends AppCompatActivity {
         });
 
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_medicine_item, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int itemId = item.getItemId();
+        if (itemId == R.id.nav_medicine) {
+            startActivity(new Intent(AddMedicineActivity.this, AllMedicineActivity.class));
+            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

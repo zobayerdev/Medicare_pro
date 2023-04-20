@@ -1,13 +1,13 @@
 package com.trodev.medicarepro.models;
 
-public class MedicineModels {
+public class MedicineData {
 
     private String name, details, indication, dosage, interaction, effect, warnings, conditions, key ;
 
-    public MedicineModels() {
+    public MedicineData() {
     }
 
-    public MedicineModels(String name, String details, String indication, String dosage, String interaction, String effect, String warnings, String conditions, String key) {
+    public MedicineData(String name, String details, String indication, String dosage, String interaction, String effect, String warnings, String conditions, String key) {
         this.name = name;
         this.details = details;
         this.indication = indication;
