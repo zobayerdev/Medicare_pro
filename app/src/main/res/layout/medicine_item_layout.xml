@@ -3,15 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginBottom="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="vertical">
+
+        <!--        <ImageView
+                    android:id="@+id/studentImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_admin" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,26 +38,37 @@
                 android:orientation="vertical"
                 android:paddingLeft="12dp">
 
+
+                <TextView
+                    android:id="@+id/nameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/sf_ns"
+                    android:text="Medicine Name"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Medicine Name: "
+                        android:text="Indication: "
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/nameTv"
+                        android:id="@+id/indicaTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="Medicine Name"
+                        android:text="  Indication: "
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -59,56 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Short Details: "
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/shortTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="short details "
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Indication"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/indicatorsTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Indication"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dosages &amp; Administration: "
+                        android:text="Dosage &amp; Administration: "
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -118,13 +92,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:text="Dosage"
+                        android:text="  Dosage &amp; Administration"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -134,18 +106,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Interaction: "
+                        android:text="Interaction:"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/interactionTv"
+                        android:id="@+id/interTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Interaction"
+                        android:text="  Interaction"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -159,9 +131,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Side Effect: "
+                        android:text="Side Effect"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -169,12 +140,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:text="Side Effect"
+                        android:text="  Side Effect: "
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -190,16 +161,16 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/warningsTv"
+                        android:id="@+id/warningTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:text="warnings"
+                        android:text="  Precautions &amp; Warnings "
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -209,24 +180,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Storage &amp; Condition: "
+                        android:text="Storage Condition: "
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/conditionTv"
+                        android:id="@+id/condiTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:text="Storage Conditions"
+                        android:text="  Storage Condition"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
-
-
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/updateBtn"
@@ -236,13 +204,12 @@
                     android:layout_marginVertical="4dp"
                     android:fontFamily="@font/sf_ns_text"
                     android:text="Update Info"
-                    android:textStyle="bold"
                     android:textAllCaps="false" />
 
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
-
 
 </com.google.android.material.card.MaterialCardView>

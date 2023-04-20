@@ -44,4 +44,10 @@ dependencies {
     // gif dependency
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 
+    //circleimageview dependancy
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Glide dependancy
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }

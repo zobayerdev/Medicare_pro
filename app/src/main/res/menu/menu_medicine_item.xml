@@ -3,9 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/nav_medicine"
-        android:icon="@drawable/ic_medicine"
-        android:title="Scan from image"
+        android:id="@+id/nav_upload"
+        android:icon="@drawable/ic_upload"
+        android:title="Upload Data"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/nav_medicine"
+        android:icon="@drawable/ic_medicine"
+        android:title="View Medicine"
+        app:showAsAction="always" />
 </menu>

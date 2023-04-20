@@ -20,10 +20,11 @@
 
 
         <activity
-            android:name=".AllMedicineActivity"
-            android:exported="false" />
+            android:name=".activities.AllMedicineActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.AddMedicineActivity"/>
         <activity
-            android:name=".AddMedicineActivity"
+            android:name=".activities.AddMedicineActivity"
             android:exported="false"
             android:parentActivityName=".activities.AdminActivity" />
         <activity

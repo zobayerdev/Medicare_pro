@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
-import com.trodev.medicarepro.AddMedicineActivity;
 import com.trodev.medicarepro.R;
 
 import java.util.Objects;

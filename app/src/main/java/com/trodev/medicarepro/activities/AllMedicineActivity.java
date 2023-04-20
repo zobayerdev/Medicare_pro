@@ -1,4 +1,4 @@
-package com.trodev.medicarepro;
+package com.trodev.medicarepro.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.trodev.medicarepro.R;
 import com.trodev.medicarepro.adapter.MedicineAdapter;
 import com.trodev.medicarepro.models.MedicineData;
 
@@ -23,10 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllMedicineActivity extends AppCompatActivity {
-
+    private RecyclerView capsuleRv;
+    private List<MedicineData> capsuleList;
     private ProgressDialog progressDialog;
-    private RecyclerView capsulesRv;
-    private List<MedicineData> list1;
     private MedicineAdapter adapter;
     private DatabaseReference reference, dbRef;
 
@@ -36,56 +36,54 @@ public class AllMedicineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_medicine);
 
-
         // action bar title
-        getSupportActionBar().setTitle("All Application");
+        getSupportActionBar().setTitle("All Medicine");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        //init recycler views
+        capsuleRv = findViewById(R.id.capsuleRv);
+
+        // progress bar
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait for sometimes");
         progressDialog.show();
-       // progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
-        // Recycler view finding
-        capsulesRv = findViewById(R.id.capsulesRv);
+        // get data from firebase database
         reference = FirebaseDatabase.getInstance().getReference().child("Medicines");
-        Application();
+
+        CapsuleData();
+
     }
 
     // ############################################################################################
-    // ############################### Application Department ######################################
+    // ############################### Medicine Department ########################################
     // ############################################################################################
-    private void Application() {
+    private void CapsuleData() {
 
         progressDialog.setMessage("Data Fetching");
-     //   progressDialog.show();
+        progressDialog.show();
 
-        // category changes are here
         dbRef = reference.child("Capsules");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list1 = new ArrayList<>();
+                capsuleList = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                   // progressDialog.show();
-                    capsulesRv.setVisibility(View.GONE); // change
+                    progressDialog.show();
+                    capsuleRv.setVisibility(View.GONE); // change
                 } else {
-                   // progressDialog.hide();
-                    capsulesRv.setVisibility(View.VISIBLE);
+                    progressDialog.hide();
+                    capsuleRv.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
                         MedicineData data = snapshot.getValue(MedicineData.class);
-
-                        list1.add(data);
-
-                        Toast.makeText(AllMedicineActivity.this, "All Medicine are here...!", Toast.LENGTH_SHORT).show();
+                        capsuleList.add(data);
                     }
-
-                   //  progressDialog.hide();
-                    capsulesRv.setHasFixedSize(true);
-                    capsulesRv.setLayoutManager(new LinearLayoutManager(AllMedicineActivity.this));
-                    adapter = new MedicineAdapter(list1, AllMedicineActivity.this, "Capsules");
-                    capsulesRv.setAdapter(adapter);
+                    progressDialog.hide();
+                    capsuleRv.setHasFixedSize(true);
+                    capsuleRv.setLayoutManager(new LinearLayoutManager(AllMedicineActivity.this));
+                    adapter = new MedicineAdapter(capsuleList, AllMedicineActivity.this, "Capsules");
+                    capsuleRv.setAdapter(adapter);
                 }
             }
 

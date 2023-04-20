@@ -2,20 +2,19 @@ package com.trodev.medicarepro.models;
 
 public class MedicineData {
 
-    private String name, details, indication, dosage, interaction, effect, warnings, conditions, key ;
+    private String name , indica, dosage, inter, warnings, condi,  effect,  key; //image ,
 
     public MedicineData() {
     }
 
-    public MedicineData(String name, String details, String indication, String dosage, String interaction, String effect, String warnings, String conditions, String key) {
+    public MedicineData(String name, String indica, String dosage, String inter, String warnings, String condi, String effect, String key) {
         this.name = name;
-        this.details = details;
-        this.indication = indication;
+        this.indica = indica;
         this.dosage = dosage;
-        this.interaction = interaction;
-        this.effect = effect;
+        this.inter = inter;
         this.warnings = warnings;
-        this.conditions = conditions;
+        this.condi = condi;
+        this.effect = effect;
         this.key = key;
     }
 
@@ -27,20 +26,12 @@ public class MedicineData {
         this.name = name;
     }
 
-    public String getDetails() {
-        return details;
+    public String getIndica() {
+        return indica;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public String getIndication() {
-        return indication;
-    }
-
-    public void setIndication(String indication) {
-        this.indication = indication;
+    public void setIndica(String indica) {
+        this.indica = indica;
     }
 
     public String getDosage() {
@@ -51,20 +42,12 @@ public class MedicineData {
         this.dosage = dosage;
     }
 
-    public String getInteraction() {
-        return interaction;
+    public String getInter() {
+        return inter;
     }
 
-    public void setInteraction(String interaction) {
-        this.interaction = interaction;
-    }
-
-    public String getEffect() {
-        return effect;
-    }
-
-    public void setEffect(String effect) {
-        this.effect = effect;
+    public void setInter(String inter) {
+        this.inter = inter;
     }
 
     public String getWarnings() {
@@ -75,12 +58,20 @@ public class MedicineData {
         this.warnings = warnings;
     }
 
-    public String getConditions() {
-        return conditions;
+    public String getCondi() {
+        return condi;
     }
 
-    public void setConditions(String conditions) {
-        this.conditions = conditions;
+    public void setCondi(String condi) {
+        this.condi = condi;
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public void setEffect(String effect) {
+        this.effect = effect;
     }
 
     public String getKey() {

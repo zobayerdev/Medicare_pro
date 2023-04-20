@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddMedicineActivity">
+    tools:context=".activities.AddMedicineActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,27 +12,34 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!--Imageview init here-->
+        <!--  <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/appsIV"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/ic_admin" />-->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/sf_ns_text"
-            android:text="Given Medicine details below"
+            android:text="Upload Medicine Details"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <!--input for medicine-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp">
 
-            <!--Id change Student name-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nameEt"
+                android:id="@+id/nameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_ns_text"
@@ -40,8 +47,6 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <!--Input for Medicine short details-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -49,34 +54,15 @@
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/shortEt"
+                android:id="@+id/indicaET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_ns_text"
-                android:hint="Medicine short details"
+                android:hint="Indication"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!--Input medicine Indications-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <!--Id change Student Result-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/indicatorEt"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:fontFamily="@font/sf_ns_text"
-                android:gravity="start"
-                android:hint="Medicine Indications"
-                android:inputType="text|textMultiLine" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Input for Dosages and Administration-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -84,35 +70,31 @@
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/doseEt"
+                android:id="@+id/dosageET"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="start"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_ns_text"
                 android:hint="Dosage &amp; Administration"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--Input for Interactions-->
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp">
 
-            <!--Id change Student Result-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/interactionEt"
+                android:id="@+id/interET"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="start"
+                android:layout_height="200dp"
                 android:fontFamily="@font/sf_ns_text"
+                android:gravity="start"
                 android:hint="Interaction"
-                android:inputType="text" />
+                android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <!--Input for side effects-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -120,52 +102,52 @@
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/effectEt"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="start"
-                android:fontFamily="@font/sf_ns_text"
-                android:hint="Side effects"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Input for warnings-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/warningsEt"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="start"
-                android:fontFamily="@font/sf_ns_text"
-                android:hint="Precautions &amp; warnings"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--storage condition edittext-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/conditionEt"
+                android:id="@+id/effectET"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:fontFamily="@font/sf_ns_text"
                 android:gravity="start"
-                android:hint="Storage Condition"
+                android:hint="Side Effects"
                 android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!--Medicine category-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/warningsET"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:fontFamily="@font/sf_ns_text"
+                android:gravity="start"
+                android:hint="Warnings"
+                android:inputType="text|textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/condiET"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:fontFamily="@font/sf_ns_text"
+                android:gravity="start"
+                android:hint="Side Effects"
+                android:inputType="text|textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!--spinner to get category-->
         <Spinner
             android:id="@+id/AddCategory"
             android:layout_width="match_parent"
@@ -184,7 +166,6 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/sf_ns_text"
             android:text="Upload"
-            android:textStyle="bold"
             android:textAllCaps="false"
             android:textSize="15sp" />
 
