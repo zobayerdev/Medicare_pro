@@ -19,10 +19,14 @@
         tools:targetApi="31">
         <activity
             android:name=".AddMedicineActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.AdminActivity"
+            />
         <activity
             android:name=".activities.AdminActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.MainActivity"
+            />
         <activity
             android:name=".activities.SplashActivity"
             android:exported="false" />

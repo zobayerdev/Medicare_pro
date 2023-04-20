@@ -6,146 +6,457 @@
     android:layout_height="match_parent"
     tools:context=".activities.AdminActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_about" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/sf_ns_text"
-            android:text="Upload Image. Tap on image"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
 
-        <!--Input Text for Notice-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <!--Id change Student name-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/appNameET"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_ns_text"
-                android:hint="Application Name"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/addMedicine"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="#FFFFFF"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
 
-        <!--Input Text for teacher emails-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-            <!--Id change Student Roll-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/developLanET"
-                android:layout_width="match_parent"
+                        <pl.droidsonroids.gif.GifImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_medicine" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ubuntu_bold"
+                    android:gravity="center"
+                    android:text="Add\nMedicine"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_ns_text"
-                android:hint="Development Langugae"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <!--Input Text for Notice-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/video_call"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#FFFFFF"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp">
 
-            <!--Id change Student Result-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/typeET"
-                android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_notification" />
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ubuntu_bold"
+                        android:gravity="center"
+                        android:text="Push\nNotification"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_ns_text"
-                android:hint="Apps Type"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/notice"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#FFFFFF"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_add_alarm" />
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ubuntu_bold"
+                        android:gravity="center"
+                        android:text="Reminder"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/calls"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_margin="5dp"
+                            android:backgroundTint="#FADD43"
+                            app:cardCornerRadius="15dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@drawable/ic_about" />
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/ubuntu_bold"
+                            android:gravity="center"
+                            android:text="Call now"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/motives"
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:layout_margin="5dp"
+                                android:backgroundTint="#FA6443"
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:src="@drawable/ic_about" />
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/ubuntu_bold"
+                                android:gravity="center"
+                                android:text="Motive"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/location"
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:layout_margin="5dp"
+                                android:backgroundTint="#FADD43"
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+
+                                    <pl.droidsonroids.gif.GifImageView
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:src="@drawable/ic_about" />
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/ubuntu_bold"
+                                android:gravity="center"
+                                android:text="Location"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
-        <!--Input Text for Notice-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
-            <!--Id change Student Result-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/descriptionET"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:fontFamily="@font/sf_ns_text"
-                android:gravity="start"
-                android:hint="Description"
-                android:inputType="text|textMultiLine" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/sms"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_margin="5dp"
+                            android:backgroundTint="#FAA643"
+                            app:cardCornerRadius="15dp"
+                            app:cardElevation="5dp">
 
-            <!--Id change Student Result-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/linkET"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:fontFamily="@font/sf_ns_text"
-                android:gravity="start"
-                android:hint="Play Store Url"
-                android:inputType="text|textMultiLine" />
-        </com.google.android.material.textfield.TextInputLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
 
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@drawable/ic_about" />
+                            </LinearLayout>
 
-        <!-- Id change Student category-->
-        <Spinner
-            android:id="@+id/AddCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
-            android:background="@android:drawable/btn_dropdown"
-            android:gravity="center"
-            android:spinnerMode="dropdown" />
+                        </com.google.android.material.card.MaterialCardView>
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/ubuntu_bold"
+                            android:gravity="center"
+                            android:text="Message"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
 
-        <!--Button-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/uploadBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/sf_ns_text"
-            android:text="Upload"
-            android:textAllCaps="false"
-            android:textSize="15sp" />
+                    </LinearLayout>
 
-        <!--Button-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/showApplication"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/sf_ns_text"
-            android:text="Show APplication"
-            android:textAllCaps="false"
-            android:textSize="15sp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/gallery"
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:layout_margin="5dp"
+                                android:backgroundTint="#FADD43"
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:src="@drawable/ic_about" />
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/ubuntu_bold"
+                                android:gravity="center"
+                                android:text="Gallery"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/profile"
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:layout_margin="5dp"
+                                android:backgroundTint="#FA6443"
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:src="@drawable/ic_about" />
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/ubuntu_bold"
+                                android:gravity="center"
+                                android:text="My Profile"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+        -->
 
     </LinearLayout>
 

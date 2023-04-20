@@ -23,7 +23,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <!--Input Text for Notice-->
+        <!--input for medicine-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -41,14 +41,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!--Input Text for teacher emails-->
+        <!--Input for Medicine short details-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp">
 
-            <!--Id change Student Roll-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/shortEt"
                 android:layout_width="match_parent"
@@ -59,25 +58,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!--Input Text for Notice-->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <!--Id change Student Result-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/elementEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_ns_text"
-                android:hint="Medicine Maker elements"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <!--Input Text for Notice-->
+        <!--Input medicine Indications-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -88,13 +69,31 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/indicatorEt"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:fontFamily="@font/sf_ns_text"
                 android:gravity="start"
                 android:hint="Medicine Indications"
                 android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--Input for Dosages and Administration-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/doseEt"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="start"
+                android:fontFamily="@font/sf_ns_text"
+                android:hint="Dosage &amp; Administration"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Input for Interactions-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -103,17 +102,70 @@
 
             <!--Id change Student Result-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/linkET"
+                android:id="@+id/interactionEt"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="start"
+                android:fontFamily="@font/sf_ns_text"
+                android:hint="Interaction"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!--Input for side effects-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/effectEt"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="start"
+                android:fontFamily="@font/sf_ns_text"
+                android:hint="Side effects"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Input for warnings-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/warningsEt"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="start"
+                android:fontFamily="@font/sf_ns_text"
+                android:hint="Dosage &amp; Administration"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--storage condition edittext-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/conditionEt"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:fontFamily="@font/sf_ns_text"
                 android:gravity="start"
-                android:hint="Play Store Url"
+                android:hint="Storage Condition"
                 android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!-- Id change Student category-->
+        <!--Medicine category-->
         <Spinner
             android:id="@+id/AddCategory"
             android:layout_width="match_parent"
@@ -132,6 +184,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/sf_ns_text"
             android:text="Upload"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textSize="15sp" />
 
