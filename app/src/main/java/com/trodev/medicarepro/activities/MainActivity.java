@@ -6,17 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -116,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         switch (item.getItemId()) {
+            case R.id.nav_admin:
+                  startActivity(new Intent(MainActivity.this, AdminActivity.class));
+                Toast.makeText(this, "Welcome Admin Profile", Toast.LENGTH_SHORT).show();
+                break;
+
             case R.id.nav_profile:
                 //   startActivity(new Intent(MainActivity.this, CustomerReviewActivity.class));
                 Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show();

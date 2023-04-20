@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "937161834965",
+    "project_id": "medicare-pro-b0152",
+    "storage_bucket": "medicare-pro-b0152.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937161834965:android:7f091dbdaf0d2c50fbbd5c",
+        "android_client_info": {
+          "package_name": "com.trodev.medicarepro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937161834965-dmc65e85sgot7ke7jqos2fmjeoqf53c3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trodev.medicarepro",
+            "certificate_hash": "8d1016c6362bffee31705cec487888642de4d798"
+          }
+        },
+        {
+          "client_id": "937161834965-8u6heum19lsc34o1ol7tb0442n8doeed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMD7JBerkFYPxHbpfrNmoge9bZcL2rrPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937161834965-8u6heum19lsc34o1ol7tb0442n8doeed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
