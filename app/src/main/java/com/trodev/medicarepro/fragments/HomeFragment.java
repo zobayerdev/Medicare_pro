@@ -1,19 +1,17 @@
 package com.trodev.medicarepro.fragments;
 
-import android.annotation.SuppressLint;
-import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,76 +32,60 @@ public class HomeFragment extends Fragment {
     private ProgressDialog progressDialog;
     private MedicineAdapter adapter;
     private DatabaseReference reference, dbRef;
-    private Context mContext;
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-
-        mContext = context;
-        super.onAttach(context);
-    }
-
-    @SuppressLint("MissingInflatedId")
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //init recycler views
+        capsuleRv = view.findViewById(R.id.capsuleRv);
 
         // get data from firebase database
         reference = FirebaseDatabase.getInstance().getReference().child("Medicines");
 
-        //init recycler views
-        capsuleRv = view.findViewById(R.id.capsuleRv);
-        // progress bar
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setTitle("Please wait for sometimes");
-        progressDialog.show();
-        progressDialog.setCanceledOnTouchOutside(false);
-
+        /*load recyclerview*/
         CapsuleData();
-
         return view;
     }
 
     // ############################################################################################
-    // ############################### Medicine Department ########################################
+    // ############################### Capsule Department ########################################
     // ############################################################################################
     private void CapsuleData() {
 
-        progressDialog.setMessage("Data Fetching");
-        progressDialog.show();
-
+        /*database name set on database reference*/
         dbRef = reference.child("Capsules");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 capsuleList = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                    progressDialog.show();
-                    capsuleRv.setVisibility(View.GONE); // change
+                    capsuleRv.setVisibility(View.GONE);
                 } else {
-                    progressDialog.hide();
+
                     capsuleRv.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         MedicineData data = snapshot.getValue(MedicineData.class);
                         capsuleList.add(data);
                     }
-                    progressDialog.hide();
                     capsuleRv.setHasFixedSize(true);
                     capsuleRv.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new MedicineAdapter(capsuleList, getContext(), "Capsules");
                     capsuleRv.setAdapter(adapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                progressDialog.hide();
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

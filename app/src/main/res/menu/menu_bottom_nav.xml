@@ -15,7 +15,7 @@
     <item
         android:id="@+id/bottom_menu_about"
         android:fontFamily="@font/tinos_bold"
-        android:icon="@drawable/ic_about"
-        android:title="About us" />
+        android:icon="@drawable/ic_notification"
+        android:title="Notification" />
 
 </menu>

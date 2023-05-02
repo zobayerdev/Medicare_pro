@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         // #################################################################
-        // eikhane eituku hocche amader navigation layout er kaj korar jonno.
+        // navigation view work process
         navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == id.bottom_menu_home) {
-                    // loadHomeFragment();
+                     loadHomeFragment();
                 } else if (itemId == id.bottom_menu_dev) {
                     loadDeveloperFragment();
                 } else if (itemId == id.bottom_menu_about) {
@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadHomeFragment() {
 
-        setTitle("Prescription List");
-        ImageFragment imageFragment = new ImageFragment();
+        setTitle("Dashboard");
+        HomeFragment homeFragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, imageFragment, "imageFragment");
+        fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
         fragmentTransaction.commit();
 
     }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadAboutFragment() {
-        setTitle("About Us");
+        setTitle("Notification");
         AboutFragment aboutFragment = new AboutFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, aboutFragment, "aboutFragment");
@@ -146,14 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     //e.toString();
                 }
-                break;
-            case R.id.nav_rate:
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                    Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-                }
+
                 break;
             case R.id.nav_apps:
                 try {

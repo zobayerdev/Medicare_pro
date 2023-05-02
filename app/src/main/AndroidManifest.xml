@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -17,12 +17,13 @@
         android:theme="@style/Theme.MedicarePro"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".activities.MedicineReminderActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.AllMedicineActivity"
             android:exported="false"
-            android:parentActivityName=".activities.AddMedicineActivity"/>
+            android:parentActivityName=".activities.AddMedicineActivity" />
         <activity
             android:name=".activities.AddMedicineActivity"
             android:exported="false"
