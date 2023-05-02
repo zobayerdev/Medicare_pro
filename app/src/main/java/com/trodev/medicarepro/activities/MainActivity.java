@@ -1,5 +1,7 @@
 package com.trodev.medicarepro.activities;
 
+import static com.trodev.medicarepro.R.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +27,6 @@ import com.trodev.medicarepro.fragments.ImageFragment;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
     private BottomNavigationView bottomNavigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
@@ -35,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(layout.activity_main);
 
 
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navigationView = findViewById(R.id.navigation_view);
+        drawerLayout = findViewById(id.drawerLayout);
+        navigationView = findViewById(id.navigation_view);
 
 
         // #######################
         // Drawer Layout implement
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.start, R.string.close);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, string.start, string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(id.bottomNavigationView);
         loadHomeFragment();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -61,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 int itemId = item.getItemId();
-                if (itemId == R.id.bottom_menu_home) {
-                    loadHomeFragment();
-                } else if (itemId == R.id.bottom_menu_dev) {
+                if (itemId == id.bottom_menu_home) {
+                    // loadHomeFragment();
+                } else if (itemId == id.bottom_menu_dev) {
                     loadDeveloperFragment();
-                } else if (itemId == R.id.bottom_menu_about) {
+                } else if (itemId == id.bottom_menu_about) {
                     loadAboutFragment();
                 } else {
                     Toast.makeText(MainActivity.this, "Invalid Click", Toast.LENGTH_SHORT).show();
@@ -73,16 +74,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
-
     private void loadHomeFragment() {
-        setTitle("Home");
-        HomeFragment homeFragment = new HomeFragment();
+
+        setTitle("Prescription List");
+        ImageFragment imageFragment = new ImageFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
+        fragmentTransaction.replace(R.id.frameLayout, imageFragment, "imageFragment");
         fragmentTransaction.commit();
+
     }
 
     private void loadDeveloperFragment() {
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
         switch (item.getItemId()) {
             case R.id.nav_admin:
-                  startActivity(new Intent(MainActivity.this, AdminActivity.class));
+                startActivity(new Intent(MainActivity.this, AdminActivity.class));
                 Toast.makeText(this, "Welcome Admin Profile", Toast.LENGTH_SHORT).show();
                 break;
 
