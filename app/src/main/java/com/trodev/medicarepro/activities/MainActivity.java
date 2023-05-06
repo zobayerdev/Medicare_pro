@@ -19,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.trodev.medicarepro.BuildConfig;
+import com.trodev.medicarepro.fragments.PdfFragment;
 import com.trodev.medicarepro.R;
 import com.trodev.medicarepro.fragments.AboutFragment;
 import com.trodev.medicarepro.fragments.HomeFragment;
@@ -63,17 +64,28 @@ public class MainActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == id.bottom_menu_home) {
-                     loadHomeFragment();
+                    loadHomeFragment();
                 } else if (itemId == id.bottom_menu_dev) {
                     loadDeveloperFragment();
                 } else if (itemId == id.bottom_menu_about) {
                     loadAboutFragment();
+                } else if (itemId == id.bottom_menu_pdf) {
+                    loadPdfFragment();
                 } else {
                     Toast.makeText(MainActivity.this, "Invalid Click", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
         });
+    }
+
+    private void loadPdfFragment() {
+
+        setTitle("All Pdf");
+        PdfFragment pdfFragment = new PdfFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, pdfFragment, "pdfFragment");
+        fragmentTransaction.commit();
     }
 
     private void loadHomeFragment() {
