@@ -29,6 +29,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private RecyclerView capsuleRv;
     private List<MedicineData> capsuleList;
+
     private ProgressDialog progressDialog;
     private MedicineAdapter adapter;
     private DatabaseReference reference, dbRef;

@@ -79,7 +79,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/video_call"
+                        android:id="@+id/push_notification"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:layout_margin="5dp"

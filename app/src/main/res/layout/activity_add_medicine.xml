@@ -62,7 +62,6 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -77,7 +76,6 @@
                 android:hint="Dosage &amp; Administration"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -111,7 +109,6 @@
                 android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -127,7 +124,6 @@
                 android:hint="Warnings"
                 android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -146,7 +142,6 @@
                 android:inputType="text|textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <!--spinner to get category-->
         <Spinner
             android:id="@+id/AddCategory"
@@ -156,7 +151,6 @@
             android:background="@android:drawable/btn_dropdown"
             android:gravity="center"
             android:spinnerMode="dropdown" />
-
 
         <!--Button-->
         <com.google.android.material.button.MaterialButton

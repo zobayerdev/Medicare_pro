@@ -2,7 +2,7 @@ package com.trodev.medicarepro.models;
 
 public class MedicineData {
 
-    private String name , indica, dosage, inter, warnings, condi,  effect,  key; //image ,
+    public String name , indica, dosage, inter, warnings, condi,  effect,  key; //image ,
 
     public MedicineData() {
     }
