@@ -1,13 +1,9 @@
 package com.trodev.medicarepro.activities;
 
-import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -24,7 +20,7 @@ public class AlarmRecevier extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,"medicarepro")
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Medicare Pro Alarm Manager")
-                .setContentText("It's time to take madicine")
+                .setContentText("It's time to take medicine")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

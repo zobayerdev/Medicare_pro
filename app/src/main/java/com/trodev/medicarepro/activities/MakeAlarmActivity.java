@@ -50,6 +50,7 @@ public class MakeAlarmActivity extends AppCompatActivity {
         cencelAlarm = findViewById(R.id.cencelBtn);
         timer = findViewById(R.id.timer);
 
+
         selectTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

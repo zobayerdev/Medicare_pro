@@ -57,7 +57,9 @@
         </activity>
 
 
-        <receiver android:name=".activities.AlarmRecevier"/>
+        <receiver android:name=".activities.AlarmRecevier"
+            android:enabled="true"
+            />
 
     </application>
 
