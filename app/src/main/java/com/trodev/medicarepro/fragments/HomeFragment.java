@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trodev.medicarepro.R;
 import com.trodev.medicarepro.activities.AllMedicineActivity;
-import com.trodev.medicarepro.adapter.MedicineAdapter;
+import com.trodev.medicarepro.adapter.MedicineUserAdapter;
 import com.trodev.medicarepro.models.MedicineData;
 
 import java.util.ArrayList;
@@ -29,9 +30,8 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private RecyclerView capsuleRv;
     private List<MedicineData> capsuleList;
-
-    private ProgressDialog progressDialog;
-    private MedicineAdapter adapter;
+    private ProgressBar progressBar;
+    private MedicineUserAdapter adapter;
     private DatabaseReference reference, dbRef;
 
     public HomeFragment() {
@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
 
         //init recycler views
         capsuleRv = view.findViewById(R.id.capsuleRv);
+        progressBar = view.findViewById(R.id.progressBar);
 
         // get data from firebase database
         reference = FirebaseDatabase.getInstance().getReference().child("Medicines");
@@ -67,9 +68,10 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 capsuleList = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
+                    progressBar.setVisibility(View.VISIBLE);
                     capsuleRv.setVisibility(View.GONE);
                 } else {
-
+                    progressBar.setVisibility(View.INVISIBLE);
                     capsuleRv.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         MedicineData data = snapshot.getValue(MedicineData.class);
@@ -77,13 +79,14 @@ public class HomeFragment extends Fragment {
                     }
                     capsuleRv.setHasFixedSize(true);
                     capsuleRv.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter = new MedicineAdapter(capsuleList, getContext(), "Capsules");
+                    adapter = new MedicineUserAdapter(capsuleList, getContext(), "Capsules");
                     capsuleRv.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.VISIBLE);
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

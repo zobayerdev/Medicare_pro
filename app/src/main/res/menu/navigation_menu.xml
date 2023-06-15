@@ -6,10 +6,6 @@
         android:icon="@drawable/ic_admin"
         android:title="Admin Profile" />
 
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_about"
-        android:title="My Profile" />
 
     <item
         android:id="@+id/nav_reminder"
@@ -25,15 +21,5 @@
         android:id="@+id/nav_policy"
         android:icon="@drawable/ic_privacy"
         android:title="Privacy Policy" />
-
-    <item
-        android:id="@+id/nav_share"
-        android:icon="@drawable/ic_share"
-        android:title="Share" />
-
-    <item
-        android:id="@+id/nav_apps"
-        android:icon="@drawable/ic_apps"
-        android:title="Our Apps" />
 
 </menu>

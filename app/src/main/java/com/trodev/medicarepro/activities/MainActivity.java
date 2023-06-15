@@ -8,11 +8,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -116,59 +123,39 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         }
-        switch (item.getItemId()) {
-            case R.id.nav_admin:
-                startActivity(new Intent(MainActivity.this, AdminActivity.class));
-                Toast.makeText(this, "Welcome Admin Profile", Toast.LENGTH_SHORT).show();
-                break;
+        int itemId = item.getItemId();
 
-            case R.id.nav_profile:
-                //   startActivity(new Intent(MainActivity.this, CustomerReviewActivity.class));
-                Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show();
-                break;
 
-            case R.id.nav_contact:
-                Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.nav_reminder:
-                Toast.makeText(this, "Reminder", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.nav_policy:
-                Toast.makeText(this, "Privacy Policy", Toast.LENGTH_SHORT).show();
-                //   startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
-                break;
-            case R.id.nav_share:
-                try {
-                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                    shareIntent.setType("text/plain");
-                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Medicare");
-                    String shareMessage = "\nMedicare Pro Download now\n\n";
-                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n";
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                    startActivity(Intent.createChooser(shareIntent, "choose one"));
-                    Toast.makeText(this, "Share Apps", Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    //e.toString();
-                }
-
-                break;
-            case R.id.nav_apps:
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=6580660399707616800")));
-                    Toast.makeText(this, "Our Apps", Toast.LENGTH_SHORT).show();
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=6580660399707616800")));
-                }
-                break;
+        if(itemId == id.nav_reminder)
+        {
+            startActivity(new Intent(MainActivity.this, MakeAlarmActivity.class));
+        } else if (itemId == id.nav_admin) {
+            startActivity(new Intent(MainActivity.this, AdminActivity.class));
+        } else if (itemId == id.nav_policy) {
+            
         }
+        else if(itemId == id.nav_contact)
+        {
+            Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();
+            final Dialog dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.developer_bottomsheet_layout);
+
+            dialog.show();
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+            dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

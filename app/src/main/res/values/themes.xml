@@ -28,7 +28,7 @@
     <style name="Theme.Convertix.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Convertix.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/sf_ns_text</item>
     </style>
 
