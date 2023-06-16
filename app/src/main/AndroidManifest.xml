@@ -29,9 +29,6 @@
             android:name=".activities.PdfViewActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MedicineReminderActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.AllMedicineActivity"
             android:exported="false"
             android:parentActivityName=".activities.AddMedicineActivity" />
