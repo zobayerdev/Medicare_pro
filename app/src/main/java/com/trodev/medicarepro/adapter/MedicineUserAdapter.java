@@ -4,13 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.trodev.medicarepro.R;
 import com.trodev.medicarepro.models.MedicineData;
 
@@ -52,6 +56,13 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
         holder.warning.setText(item.getWarnings());
         holder.condi.setText(item.getCondi());
 
+        boolean isExpandable = list.get(position).isExpandable();
+        holder.expandable_layout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
+
+        /*animation view with slider*/
+        // holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slider));
+
+
     }
 
     @Override
@@ -61,6 +72,11 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
 
     public class MedicineViewAdapter extends RecyclerView.ViewHolder {
         private TextView name, development, types, description, url, warning, condi;
+
+        LinearLayout linear_layout;
+        RelativeLayout expandable_layout;
+
+        MaterialCardView cardView;
 
         public MedicineViewAdapter(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +89,22 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
             types = itemView.findViewById(R.id.dosageTv);
             description = itemView.findViewById(R.id.interTv);
             url = itemView.findViewById(R.id.effectTv);
+            cardView = itemView.findViewById(R.id.cardView);
+
+
+            linear_layout = itemView.findViewById(R.id.linear_layout);
+            expandable_layout = itemView.findViewById(R.id.expandable_layout);
+
+            //here is expandable code
+            linear_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MedicineData medicineData = list.get(getAdapterPosition());
+                    medicineData.setExpandable(!medicineData.isExpandable());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
+
         }
     }
 }

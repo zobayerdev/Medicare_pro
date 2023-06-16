@@ -4,6 +4,8 @@ public class MedicineData {
 
     public String name, indica, dosage, inter, warnings, condi, effect, key; //image ,
 
+    private boolean expandable;
+
     public MedicineData() {
     }
 
@@ -16,6 +18,15 @@ public class MedicineData {
         this.condi = condi;
         this.effect = effect;
         this.key = key;
+        this.expandable = false;
+    }
+
+    public boolean isExpandable() {
+        return expandable;
+    }
+
+    public void setExpandable(boolean expandable) {
+        this.expandable = expandable;
     }
 
     public String getName() {
@@ -81,4 +92,17 @@ public class MedicineData {
     public void setKey(String key) {
         this.key = key;
     }
+
+
+//    public String toString(){
+//        return "MedicineData{ " +
+//                "indica= ' " + indica +
+//                "dosage= ' " + dosage +
+//                "inter= ' " + inter +
+//                "warnings= ' " + warnings +
+//                "condi= ' " + condi +
+//                "effect= ' " + effect
+//                + '}';
+//    }
+
 }

@@ -10,11 +10,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -25,7 +23,6 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
-import com.trodev.medicarepro.BuildConfig;
 import com.trodev.medicarepro.fragments.PdfFragment;
 import com.trodev.medicarepro.R;
 import com.trodev.medicarepro.fragments.AboutFragment;
@@ -61,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         // navigation view work process
         navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        // navigationView.setBackgroundColor(getResources().getColor(color.cream));
 
         bottomNavigationView = findViewById(id.bottomNavigationView);
         loadHomeFragment();
@@ -146,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();
             final Dialog dialog = new Dialog(this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.developer_bottomsheet_layout);
+            dialog.setContentView(R.layout.contact_bottomsheet_layout);
 
             dialog.show();
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
