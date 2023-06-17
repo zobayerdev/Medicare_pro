@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.trodev.medicarepro.R;
 import com.trodev.medicarepro.activities.AllMedicineActivity;
@@ -32,8 +33,12 @@ public class HomeFragment extends Fragment {
     private List<MedicineData> capsuleList;
     private ProgressBar progressBar;
     private MedicineUserAdapter adapter;
-    private DatabaseReference reference, dbRef;
-
+    private DatabaseReference reference;
+    private String lastKey = "";
+    private int pageSize = 20;
+    private boolean isLoading = false; // Flag to prevent multiple simultaneous data loads
+    private boolean isLastPage = false; // Flag to indicate if all data has been loaded
+    private LinearLayoutManager layoutManager;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -49,47 +54,94 @@ public class HomeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
 
         // get data from firebase database
-        reference = FirebaseDatabase.getInstance().getReference().child("Medicines");
+        reference = FirebaseDatabase.getInstance().getReference().child("Medicine");
 
-        /*load recyclerview*/
-        CapsuleData();
+        layoutManager = new LinearLayoutManager(getContext());
+        capsuleRv.setLayoutManager(layoutManager);
+        capsuleList = new ArrayList<>();
+        adapter = new MedicineUserAdapter(capsuleList, getContext());
+        capsuleRv.setAdapter(adapter);
+
+        capsuleRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                int visibleItemCount = layoutManager.getChildCount();
+                int totalItemCount = layoutManager.getItemCount();
+                int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
+
+                if (!isLoading && !isLastPage) {
+                    if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
+                            && firstVisibleItemPosition >= 0
+                            && totalItemCount >= pageSize) {
+                        loadData();
+                    }
+                }
+
+            }
+        });
+
+        loadData();
+
+
         return view;
     }
 
-    // ############################################################################################
-    // ############################### Capsule Department ########################################
-    // ############################################################################################
-    private void CapsuleData() {
+    private void loadData() {
 
-        /*database name set on database reference*/
-        dbRef = reference.child("Capsules");
-        dbRef.addValueEventListener(new ValueEventListener() {
+        isLoading = true;
+
+        Query query;
+
+        if (lastKey.isEmpty()) {
+            query = reference.orderByKey().limitToFirst(pageSize);
+        } else {
+            query = reference.orderByKey().startAfter(lastKey).limitToFirst(pageSize);
+        }
+
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                capsuleList = new ArrayList<>();
-                if (!dataSnapshot.exists()) {
-                    progressBar.setVisibility(View.VISIBLE);
-                    capsuleRv.setVisibility(View.GONE);
-                } else {
+
+                int count = 0;
+
+                if (dataSnapshot.exists()) {
                     progressBar.setVisibility(View.INVISIBLE);
                     capsuleRv.setVisibility(View.VISIBLE);
+
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         MedicineData data = snapshot.getValue(MedicineData.class);
                         capsuleList.add(data);
+
+                        count++;
+                        lastKey = snapshot.getKey();
+
                     }
-                    capsuleRv.setHasFixedSize(true);
-                    capsuleRv.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter = new MedicineUserAdapter(capsuleList, getContext(), "Capsules");
-                    capsuleRv.setAdapter(adapter);
+
+                    adapter.notifyDataSetChanged();
+
+                    if (count < pageSize) {
+                        isLastPage = true;
+                    }
+
+                    isLoading = false;
+
+                } else {
+
+                    progressBar.setVisibility(View.VISIBLE);
+                    capsuleRv.setVisibility(View.GONE);
+                    isLoading = false;
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                progressBar.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                isLoading = false;
             }
         });
+
     }
 
 }

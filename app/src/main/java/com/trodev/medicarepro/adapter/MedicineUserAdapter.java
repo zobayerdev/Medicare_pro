@@ -23,12 +23,12 @@ import java.util.List;
 public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapter.MedicineViewAdapter> {
     private List<MedicineData> list;
     private Context context;
-    private String category;
+    //  private String category;
 
-    public MedicineUserAdapter(List<MedicineData> list, Context context, String category) {
+    public MedicineUserAdapter(List<MedicineData> list, Context context) { //, String category
         this.list = list;
         this.context = context;
-        this.category = category;
+        //  this.category = category;
     }
 
     @NonNull
@@ -47,20 +47,23 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
         /*set model to adapter to set data on views*/
         MedicineData item = list.get(position);
 
-        /*set data on views*/
-        holder.name.setText(item.getName());
-        holder.development.setText(item.getIndica());
-        holder.types.setText(item.getDosage());
-        holder.description.setText(item.getInter());
-        holder.url.setText(item.getEffect());
-        holder.warning.setText(item.getWarnings());
-        holder.condi.setText(item.getCondi());
+        /*set data set on views*/
+        holder.typeTv.setText(item.getType());
+        holder.nameTv.setText(item.getBrand());
+        holder.strengthTv.setText(item.getStrength());
+        holder.formTv.setText(item.getForm());
+        holder.genericTv.setText(item.getGeneric());
+        holder.manufacturerTv.setText(item.getManufacturer());
+        holder.priceTv.setText(item.getPrice());
+        holder.indicationTv.setText(item.getIndication());
+        holder.dosageTv.setText(item.getDosage());
+        holder.precautionsTv.setText(item.getPrecautions());
+        holder.pregnancyTv.setText(item.getPregnancy());
+        holder.side_effectsTv.setText(item.getSide_effects());
+        holder.storageTv.setText(item.getStorage());
 
         boolean isExpandable = list.get(position).isExpandable();
         holder.expandable_layout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
-
-        /*animation view with slider*/
-        // holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slider));
 
 
     }
@@ -73,6 +76,9 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
     public class MedicineViewAdapter extends RecyclerView.ViewHolder {
         private TextView name, development, types, description, url, warning, condi;
 
+        private TextView nameTv, typeTv, strengthTv, formTv, genericTv, manufacturerTv, priceTv, indicationTv,
+                dosageTv, precautionsTv, pregnancyTv, side_effectsTv, storageTv;
+
         LinearLayout linear_layout;
         RelativeLayout expandable_layout;
 
@@ -81,15 +87,19 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
         public MedicineViewAdapter(@NonNull View itemView) {
             super(itemView);
 
-            /*Init all data from views layouts*/
-            name = itemView.findViewById(R.id.nameTv);
-            development = itemView.findViewById(R.id.indicaTv);
-            warning = itemView.findViewById(R.id.warningTv);
-            condi = itemView.findViewById(R.id.condiTv);
-            types = itemView.findViewById(R.id.dosageTv);
-            description = itemView.findViewById(R.id.interTv);
-            url = itemView.findViewById(R.id.effectTv);
-            cardView = itemView.findViewById(R.id.cardView);
+            typeTv = itemView.findViewById(R.id.typeTv);
+            nameTv = itemView.findViewById(R.id.nameTv);
+            strengthTv = itemView.findViewById(R.id.strengthTv);
+            formTv = itemView.findViewById(R.id.formTv);
+            genericTv = itemView.findViewById(R.id.genericTv);
+            manufacturerTv = itemView.findViewById(R.id.manufacturerTv);
+            priceTv = itemView.findViewById(R.id.priceTv);
+            indicationTv = itemView.findViewById(R.id.indicationTv);
+            dosageTv = itemView.findViewById(R.id.dosageTv);
+            precautionsTv = itemView.findViewById(R.id.precautionsTv);
+            pregnancyTv = itemView.findViewById(R.id.pregnancyTv);
+            side_effectsTv = itemView.findViewById(R.id.side_effectsTv);
+            storageTv = itemView.findViewById(R.id.storageTv);
 
 
             linear_layout = itemView.findViewById(R.id.linear_layout);

@@ -3,10 +3,11 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#1b1717</color>
     <color name="purple_700">#1b1717</color>
-    <color name="teal_200">#ECE8D6</color>
+    <color name="teal_200">#eeebdd</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#eeebdd</color>
     <color name="cream">#eeebdd</color>
+    <color name="ofwhite">#BCEEEBDD</color>
 
 </resources>

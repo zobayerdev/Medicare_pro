@@ -45,14 +45,14 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         /*set model to adapter to set data on views*/
         MedicineData item = list.get(position);
 
-        /*set data on views*/
+/*        *//*set data on views*//*
         holder.name.setText(item.getName());
         holder.development.setText(item.getIndica());
         holder.types.setText(item.getDosage());
         holder.description.setText(item.getInter());
         holder.url.setText(item.getEffect());
         holder.warning.setText(item.getWarnings());
-        holder.condi.setText(item.getCondi());
+        holder.condi.setText(item.getCondi());*/
 
 
 /*        try {

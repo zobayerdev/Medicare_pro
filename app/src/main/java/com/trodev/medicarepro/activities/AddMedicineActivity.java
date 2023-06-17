@@ -149,7 +149,7 @@ public class AddMedicineActivity extends AppCompatActivity {
             progressDialog.setMessage("Uploading Details");
             progressDialog.show();
             // uploadImage();
-            insertData();
+         //   insertData();
         }
 
     }
@@ -199,9 +199,12 @@ public class AddMedicineActivity extends AppCompatActivity {
     // #####################################################################################################
     // ##################################### Insert Data Code ###############################################
     // ####################################################################################################
+/*
 
     private void insertData() {
-        /*Inserted data on firebase database*/
+        */
+/*Inserted data on firebase database*//*
+
         dbRef = reference.child(category); // don't change this because it's our category based database
         final String uniquekey = dbRef.push().getKey();
 
@@ -223,6 +226,7 @@ public class AddMedicineActivity extends AppCompatActivity {
         });
 
     }
+*/
 
 
     // #######################################################################################################
