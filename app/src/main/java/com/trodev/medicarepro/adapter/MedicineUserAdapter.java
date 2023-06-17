@@ -23,12 +23,10 @@ import java.util.List;
 public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapter.MedicineViewAdapter> {
     private List<MedicineData> list;
     private Context context;
-    //  private String category;
 
-    public MedicineUserAdapter(List<MedicineData> list, Context context) { //, String category
+    public MedicineUserAdapter(List<MedicineData> list, Context context) {
         this.list = list;
         this.context = context;
-        //  this.category = category;
     }
 
     @NonNull

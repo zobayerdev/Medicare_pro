@@ -132,16 +132,13 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
 
 
-        if(itemId == id.nav_reminder)
-        {
+        if (itemId == id.nav_reminder) {
             startActivity(new Intent(MainActivity.this, MakeAlarmActivity.class));
-        } else if (itemId == id.nav_admin) {
+        } /*else if (itemId == id.nav_admin) {
             startActivity(new Intent(MainActivity.this, AdminActivity.class));
-        } else if (itemId == id.nav_policy) {
-            
-        }
-        else if(itemId == id.nav_contact)
-        {
+        } */ else if (itemId == id.nav_policy) {
+
+        } else if (itemId == id.nav_contact) {
             Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();
             final Dialog dialog = new Dialog(this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

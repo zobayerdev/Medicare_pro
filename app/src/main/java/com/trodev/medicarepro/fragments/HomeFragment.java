@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +40,8 @@ public class HomeFragment extends Fragment {
     private boolean isLoading = false; // Flag to prevent multiple simultaneous data loads
     private boolean isLastPage = false; // Flag to indicate if all data has been loaded
     private LinearLayoutManager layoutManager;
+    private SearchView searchView;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -46,12 +49,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //init recycler views
         capsuleRv = view.findViewById(R.id.capsuleRv);
         progressBar = view.findViewById(R.id.progressBar);
+        searchView = view.findViewById(R.id.searchView);
+
 
         // get data from firebase database
         reference = FirebaseDatabase.getInstance().getReference().child("Medicine");
@@ -78,15 +84,14 @@ public class HomeFragment extends Fragment {
                         loadData();
                     }
                 }
-
             }
         });
 
         loadData();
 
-
         return view;
     }
+
 
     private void loadData() {
 
@@ -135,7 +140,6 @@ public class HomeFragment extends Fragment {
                     isLoading = false;
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 isLoading = false;

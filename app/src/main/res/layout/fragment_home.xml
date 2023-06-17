@@ -7,7 +7,20 @@
     android:background="@color/ofwhite"
     tools:context=".fragments.HomeFragment">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:queryHint="Search Medicine"
+        android:background="@drawable/search_bg"
+        android:iconifiedByDefault="false"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/searchView"
         android:id="@+id/capsuleRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
