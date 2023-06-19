@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_main);
 
-
+        /*init all drawer layout*/
         drawerLayout = findViewById(id.drawerLayout);
         navigationView = findViewById(id.navigation_view);
 
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        // navigationView.setBackgroundColor(getResources().getColor(color.cream));
 
         bottomNavigationView = findViewById(id.bottomNavigationView);
         loadHomeFragment();
@@ -69,30 +68,21 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 int itemId = item.getItemId();
+
                 if (itemId == id.bottom_menu_home) {
                     loadHomeFragment();
-                } else if (itemId == id.bottom_menu_dev) {
-                    loadDeveloperFragment();
-                } else if (itemId == id.bottom_menu_about) {
-                    loadAboutFragment();
+                } else if (itemId == id.bottom_menu_prescription) {
+                    loadPrescriptionFragments();
                 } else if (itemId == id.bottom_menu_pdf) {
                     loadPdfFragment();
-                } else {
-                    Toast.makeText(MainActivity.this, "Invalid Click", Toast.LENGTH_SHORT).show();
+                } else if (itemId == id.bottom_menu_about) {
+                    loadAboutFragment();
                 }
                 return true;
             }
         });
     }
 
-    private void loadPdfFragment() {
-
-        setTitle("All Pdf");
-        PdfFragment pdfFragment = new PdfFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, pdfFragment, "pdfFragment");
-        fragmentTransaction.commit();
-    }
 
     private void loadHomeFragment() {
 
@@ -104,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loadDeveloperFragment() {
+    private void loadPrescriptionFragments() {
 
         setTitle("Prescription List");
         ImageFragment imageFragment = new ImageFragment();
@@ -112,6 +102,15 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, imageFragment, "imageFragment");
         fragmentTransaction.commit();
 
+    }
+
+    private void loadPdfFragment() {
+
+        setTitle("All Pdf");
+        PdfFragment pdfFragment = new PdfFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, pdfFragment, "pdfFragment");
+        fragmentTransaction.commit();
     }
 
     private void loadAboutFragment() {
@@ -129,14 +128,12 @@ public class MainActivity extends AppCompatActivity {
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         }
-        int itemId = item.getItemId();
 
+        int itemId = item.getItemId();
 
         if (itemId == id.nav_reminder) {
             startActivity(new Intent(MainActivity.this, MakeAlarmActivity.class));
-        } /*else if (itemId == id.nav_admin) {
-            startActivity(new Intent(MainActivity.this, AdminActivity.class));
-        } */ else if (itemId == id.nav_policy) {
+        }  else if (itemId == id.nav_policy) {
 
         } else if (itemId == id.nav_contact) {
             Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();

@@ -72,7 +72,6 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
     }
 
     public class MedicineViewAdapter extends RecyclerView.ViewHolder {
-        private TextView name, development, types, description, url, warning, condi;
 
         private TextView nameTv, typeTv, strengthTv, formTv, genericTv, manufacturerTv, priceTv, indicationTv,
                 dosageTv, precautionsTv, pregnancyTv, side_effectsTv, storageTv;

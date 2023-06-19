@@ -11,7 +11,6 @@ public class ModelImage {
         this.imageUri = imageUri;
         this.checked = checked;
     }
-
     public Uri getImageUri() {
         return imageUri;
     }

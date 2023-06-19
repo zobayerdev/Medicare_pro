@@ -8,7 +8,7 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/bottom_menu_dev"
+        android:id="@+id/bottom_menu_prescription"
         android:fontFamily="@font/tinos_bold"
         android:icon="@drawable/ic_image"
         android:title="Prescription" />

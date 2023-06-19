@@ -1,6 +1,5 @@
 package com.trodev.medicarepro.fragments;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.trodev.medicarepro.R;
-import com.trodev.medicarepro.activities.AllMedicineActivity;
 import com.trodev.medicarepro.adapter.MedicineUserAdapter;
 import com.trodev.medicarepro.models.MedicineData;
 
@@ -30,8 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    private RecyclerView capsuleRv;
-    private List<MedicineData> capsuleList;
+    private RecyclerView dataRv;
+    private List<MedicineData> dataList;
     private ProgressBar progressBar;
     private MedicineUserAdapter adapter;
     private DatabaseReference reference;
@@ -54,7 +51,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //init recycler views
-        capsuleRv = view.findViewById(R.id.capsuleRv);
+        dataRv = view.findViewById(R.id.dataRv);
         progressBar = view.findViewById(R.id.progressBar);
         searchView = view.findViewById(R.id.searchView);
 
@@ -63,12 +60,12 @@ public class HomeFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference().child("Medicine");
 
         layoutManager = new LinearLayoutManager(getContext());
-        capsuleRv.setLayoutManager(layoutManager);
-        capsuleList = new ArrayList<>();
-        adapter = new MedicineUserAdapter(capsuleList, getContext());
-        capsuleRv.setAdapter(adapter);
+        dataRv.setLayoutManager(layoutManager);
+        dataList = new ArrayList<>();
+        adapter = new MedicineUserAdapter(dataList, getContext());
+        dataRv.setAdapter(adapter);
 
-        capsuleRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        dataRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -114,11 +111,11 @@ public class HomeFragment extends Fragment {
 
                 if (dataSnapshot.exists()) {
                     progressBar.setVisibility(View.INVISIBLE);
-                    capsuleRv.setVisibility(View.VISIBLE);
+                    dataRv.setVisibility(View.VISIBLE);
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         MedicineData data = snapshot.getValue(MedicineData.class);
-                        capsuleList.add(data);
+                        dataList.add(data);
 
                         count++;
                         lastKey = snapshot.getKey();
@@ -136,10 +133,11 @@ public class HomeFragment extends Fragment {
                 } else {
 
                     progressBar.setVisibility(View.VISIBLE);
-                    capsuleRv.setVisibility(View.GONE);
+                    dataRv.setVisibility(View.GONE);
                     isLoading = false;
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 isLoading = false;

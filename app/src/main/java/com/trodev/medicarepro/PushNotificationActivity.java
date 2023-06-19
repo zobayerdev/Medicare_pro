@@ -18,8 +18,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.trodev.medicarepro.activities.AddMedicineActivity;
-import com.trodev.medicarepro.models.MedicineData;
 import com.trodev.medicarepro.models.ModelNotification;
 
 public class PushNotificationActivity extends AppCompatActivity {

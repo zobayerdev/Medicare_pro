@@ -29,7 +29,7 @@
     <style name="Theme.Convertix.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
         <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/sf_ns_text</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
     </style>
 
     <!-- ProgressBar. -->

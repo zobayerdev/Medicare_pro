@@ -28,35 +28,26 @@
         <activity
             android:name=".activities.PdfViewActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.AllMedicineActivity"
-            android:exported="false"
-            android:parentActivityName=".activities.AddMedicineActivity" />
-        <activity
-            android:name=".activities.AddMedicineActivity"
-            android:exported="false"
-            android:parentActivityName=".activities.AdminActivity" />
-        <activity
-            android:name=".activities.AdminActivity"
-            android:exported="false"
-            android:parentActivityName=".activities.MainActivity" />
+
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true" >
 
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
 
         </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
 
         </activity>
-
 
         <receiver android:name=".activities.AlarmRecevier"
             android:enabled="true"

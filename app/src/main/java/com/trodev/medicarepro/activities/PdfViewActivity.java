@@ -89,7 +89,6 @@ public class PdfViewActivity extends AppCompatActivity {
                                 mCurrentPage.close();
                             }
 
-
                             mCurrentPage = mPdfRenderer.openPage(i);
 
                             Bitmap bitmap = Bitmap.createBitmap(mCurrentPage.getWidth(), mCurrentPage.getHeight(), Bitmap.Config.ARGB_8888);

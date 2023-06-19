@@ -21,7 +21,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/searchView"
-        android:id="@+id/capsuleRv"
+        android:id="@+id/dataRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:nestedScrollingEnabled="false"
