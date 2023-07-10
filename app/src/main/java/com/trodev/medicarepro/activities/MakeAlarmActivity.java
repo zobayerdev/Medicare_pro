@@ -101,12 +101,14 @@ public class MakeAlarmActivity extends AppCompatActivity {
 
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+
+       // int i = Integer.parseInt(timer.getText().toString());
+
         Intent intent = new Intent(this, AlarmRecevier.class);
 
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
 
         Toast.makeText(this, "Alarm Set Successful", Toast.LENGTH_SHORT).show();
 
@@ -122,7 +124,7 @@ public class MakeAlarmActivity extends AppCompatActivity {
                 .build();
 
         picker.show(getSupportFragmentManager(), "medicarepro");
-
+/////
         picker.addOnPositiveButtonClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
