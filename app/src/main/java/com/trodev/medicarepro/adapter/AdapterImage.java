@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.trodev.medicarepro.R;
+import com.trodev.medicarepro.activities.ImageViewActivity;
 import com.trodev.medicarepro.models.ModelImage;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class AdapterImage extends RecyclerView.Adapter<AdapterImage.HolderImage>
                 .placeholder(R.drawable.ic_image)
                 .into(holder.imageiv);
 
-/*        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ImageViewActivity.class);
@@ -55,7 +56,7 @@ public class AdapterImage extends RecyclerView.Adapter<AdapterImage.HolderImage>
                 context.startActivity(intent);
 
             }
-        });*/
+        });
 
         //handle checkBox chjeck change listener to select/unselect the image
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

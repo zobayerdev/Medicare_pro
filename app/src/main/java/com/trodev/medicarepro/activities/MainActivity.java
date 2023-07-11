@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
                     loadPrescriptionFragments();
                 } else if (itemId == id.bottom_menu_pdf) {
                     loadPdfFragment();
-                } else if (itemId == id.bottom_menu_about) {
+                } /*else if (itemId == id.bottom_menu_about) {
                     loadAboutFragment();
-                }
+                }*/
                 return true;
             }
         });
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (itemId == id.nav_reminder) {
             startActivity(new Intent(MainActivity.this, MakeAlarmActivity.class));
-        }  else if (itemId == id.nav_policy) {
+        } else if (itemId == id.nav_policy) {
 
         } else if (itemId == id.nav_contact) {
             Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();
