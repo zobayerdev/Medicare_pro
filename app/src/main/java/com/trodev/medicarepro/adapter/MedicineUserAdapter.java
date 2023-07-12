@@ -46,8 +46,8 @@ public class MedicineUserAdapter extends RecyclerView.Adapter<MedicineUserAdapte
         MedicineData item = list.get(position);
 
         /*set data set on views*/
-        holder.typeTv.setText(item.getType());
         holder.nameTv.setText(item.getBrand());
+        holder.typeTv.setText(item.getType());
         holder.strengthTv.setText(item.getStrength());
         holder.formTv.setText(item.getForm());
         holder.genericTv.setText(item.getGeneric());

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private RecyclerView dataRv;
-    private List<MedicineData> dataList;
+    private List<MedicineData> dataList, filterDataList;
     private ProgressBar progressBar;
     private MedicineUserAdapter adapter;
     private DatabaseReference reference;
@@ -62,7 +63,8 @@ public class HomeFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         dataRv.setLayoutManager(layoutManager);
         dataList = new ArrayList<>();
-        adapter = new MedicineUserAdapter(dataList, getContext());
+        filterDataList = new ArrayList<>();
+        adapter = new MedicineUserAdapter(filterDataList, getContext()); // change datalist, set filterDataList
         dataRv.setAdapter(adapter);
 
         dataRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -86,7 +88,48 @@ public class HomeFragment extends Fragment {
 
         loadData();
 
+        /*implement search view*/
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                /*create method*/
+                performSearch(newText);
+
+                return false;
+            }
+        });
+
+
         return view;
+    }
+
+    private void performSearch(String newText) {
+
+        filterData(newText);
+        adapter.notifyDataSetChanged();
+
+    }
+
+    private void filterData(String newText) {
+
+        filterDataList.clear();
+
+        if (TextUtils.isEmpty(newText)) {
+            filterDataList.addAll(dataList);
+        } else {
+            for (MedicineData medicineData : dataList) {
+                if (medicineData.getBrand().toLowerCase().contains(newText.toLowerCase())) {
+                    filterDataList.add(medicineData);
+                }
+            }
+        }
+
     }
 
 
@@ -121,6 +164,8 @@ public class HomeFragment extends Fragment {
                         lastKey = snapshot.getKey();
 
                     }
+
+                    filterData(null);
 
                     adapter.notifyDataSetChanged();
 

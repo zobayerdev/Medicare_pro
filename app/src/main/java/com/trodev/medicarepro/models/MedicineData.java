@@ -1,7 +1,7 @@
 package com.trodev.medicarepro.models;
 
 public class MedicineData {
-    public  String brand, type, strength, form, generic, manufacturer, price, indication, dosage, precautions, pregnancy, side_effects, storage;
+    private  String brand, type, strength, form, generic, manufacturer, price, indication, dosage, precautions, pregnancy, side_effects, storage;
     private boolean expandable;
     public MedicineData() {
     }

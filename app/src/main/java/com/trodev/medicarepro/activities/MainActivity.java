@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(id.drawerLayout);
         navigationView = findViewById(id.navigation_view);
 
-
         // #######################
         // Drawer Layout implement
         toggle = new ActionBarDrawerToggle(this, drawerLayout, string.start, string.close);
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         // navigation view work process
         navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
 
         bottomNavigationView = findViewById(id.bottomNavigationView);
         loadHomeFragment();
@@ -83,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void loadHomeFragment() {
 
         setTitle("Dashboard");
@@ -91,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
         fragmentTransaction.commit();
-
     }
 
     private void loadPrescriptionFragments() {
@@ -101,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, imageFragment, "imageFragment");
         fragmentTransaction.commit();
-
     }
 
     private void loadPdfFragment() {
@@ -146,9 +141,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
             dialog.getWindow().setGravity(Gravity.BOTTOM);
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 
