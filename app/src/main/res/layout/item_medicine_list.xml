@@ -12,8 +12,7 @@
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp"
     app:strokeWidth="1dp"
-    app:strokeColor="@color/black"
-    >
+    app:strokeColor="@color/black">
 
     <LinearLayout
         android:id="@+id/linear_layout"

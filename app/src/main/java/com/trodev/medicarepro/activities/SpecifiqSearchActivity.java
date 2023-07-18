@@ -1,16 +1,17 @@
-package com.trodev.medicarepro.fragments;
+package com.trodev.medicarepro.activities;
 
-import android.os.Bundle;
+import static com.google.android.material.color.utilities.MaterialDynamicColors.error;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 
@@ -27,68 +28,66 @@ import com.trodev.medicarepro.models.MedicineData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
-    private RecyclerView dataRv;
+public class SpecifiqSearchActivity extends AppCompatActivity {
+
+    EditText resultTv;
+    String data;
+    RecyclerView dataRv;
     private List<MedicineData> dataList, filterDataList;
-    private ProgressBar progressBar;
     private MedicineUserAdapter adapter;
     private DatabaseReference reference;
+
+    private ProgressBar progressBar;
     private String lastKey = "";
-    private int pageSize = 10;
+    private LinearLayoutManager layoutManager;
+
+    private int pageSize = 5000;
     private boolean isLoading = false; // Flag to prevent multiple simultaneous data loads
     private boolean isLastPage = false; // Flag to indicate if all data has been loaded
-    private LinearLayoutManager layoutManager;
+
     private SearchView searchView;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_specifiq_search);
 
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        resultTv = findViewById(R.id.resultTv);
+        dataRv = findViewById(R.id.dataRv);
+        searchView = findViewById(R.id.searchView);
 
-        //init recycler views
-        dataRv = view.findViewById(R.id.dataRv);
-        progressBar = view.findViewById(R.id.progressBar);
-        searchView = view.findViewById(R.id.searchView);
+        progressBar = findViewById(R.id.progressBar);
 
+        data = getIntent().getStringExtra("data");
+
+        resultTv.setText(data);
 
         // get data from firebase database
         reference = FirebaseDatabase.getInstance().getReference().child("Medicine");
 
-        layoutManager = new LinearLayoutManager(getContext());
+        /*set recyclerview on linearlayout*/
+        layoutManager = new LinearLayoutManager(this);
         dataRv.setLayoutManager(layoutManager);
         dataList = new ArrayList<>();
         filterDataList = new ArrayList<>();
-        adapter = new MedicineUserAdapter(filterDataList, getContext()); // change data list, set filterDataList
+        adapter = new MedicineUserAdapter(filterDataList, this); // change data list, set filterDataList
         dataRv.setAdapter(adapter);
 
-        dataRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                int visibleItemCount = layoutManager.getChildCount();
-                int totalItemCount = layoutManager.getItemCount();
-                int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
-
-                if (!isLoading && !isLastPage) {
-                    if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
-                            && firstVisibleItemPosition >= 0
-                            && totalItemCount >= pageSize) {
-                        loadData();
-                    }
-                }
-            }
-        });
-
+        /*create function*/
         loadData();
 
-        /*implement search view*/
+        //  String searchQuery =  data.split("(\r\n|\r|\n)", -1)[0].trim();
+
+        Intent intent = getIntent();
+        String searchQuery = intent.getStringExtra("data").split("(\r\n|\r|\n)", 1)[0].trim();
+
+        // Set the search query in the SearchView
+        searchView.setQuery(searchQuery, false);
+
+
+
+        //   implement search view
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,23 +97,81 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                /*create method*/
-                performSearch(newText);
+                performSearch(searchQuery);
 
                 return false;
             }
         });
 
-
-        return view;
     }
 
-    private void performSearch(String newText) {
+    private void performSearch(String searchQuery) {
+
+        filterData(searchQuery);
+        adapter.notifyDataSetChanged();
+
+    }
+
+
+/*    private void loadData() {
+
+      Query query =  reference.orderByChild("brand")
+                .startAt("Celofen")
+                .endAt("Celofen"+"\uf8ff");
+
+      query.addValueEventListener(new ValueEventListener() {
+          @Override
+          public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+              if(snapshot.exists()){
+
+                  for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                      MedicineData data = dataSnapshot.getValue(MedicineData.class);
+                      dataList.add(data);
+                  }
+
+                  adapter.notifyDataSetChanged();;
+              }
+          }
+
+          @Override
+          public void onCancelled(@NonNull DatabaseError error) {
+
+          }
+      });
+                //.endAt(searchQuery + "\uf8ff");
+*//*
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                if (dataSnapshot.exists()) {
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        MedicineData data = snapshot.getValue(MedicineData.class);
+                        dataList.add(data);
+
+                    }
+
+                    adapter.notifyDataSetChanged();
+
+                }}
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*//*
+
+    }*/
+
+/*    private void performSearch(String newText) {
 
         filterData(newText);
         adapter.notifyDataSetChanged();
 
-    }
+    }*/
 
     private void filterData(String newText) {
 
@@ -135,8 +192,10 @@ public class HomeFragment extends Fragment {
 
     private void loadData() {
 
+        /*is loading true*/
         isLoading = true;
 
+        /*init query*/
         Query query;
 
         if (lastKey.isEmpty()) {
@@ -145,7 +204,7 @@ public class HomeFragment extends Fragment {
             query = reference.orderByKey().startAfter(lastKey).limitToFirst(pageSize);
         }
 
-
+        /*listener on query*/
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -177,7 +236,7 @@ public class HomeFragment extends Fragment {
 
                 } else {
 
-                    progressBar.setVisibility(View.VISIBLE);
+                    //  progressBar.setVisibility(View.VISIBLE);
                     dataRv.setVisibility(View.GONE);
                     isLoading = false;
                 }

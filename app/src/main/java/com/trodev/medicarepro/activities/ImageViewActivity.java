@@ -37,7 +37,7 @@ public class ImageViewActivity extends AppCompatActivity {
     private static final String TAG = "IMAGE_TAG";
     private EditText resultTv;
     private TextRecognizer textRecognizer;
-    private ImageButton shareBtn, copyBtn;
+    private ImageButton shareBtn, copyBtn, sendDataBtn;
     ProgressDialog progressDialog;
 
     @Override
@@ -54,11 +54,13 @@ public class ImageViewActivity extends AppCompatActivity {
         resultTv = findViewById(R.id.resultTv);
         shareBtn = findViewById(R.id.shareBtn);
         copyBtn = findViewById(R.id.generateBtn);
+        sendDataBtn = findViewById(R.id.sendDataBtn);
 
         // set visibility button and textviews
         resultTv.setVisibility(View.INVISIBLE);
         shareBtn.setVisibility(View.INVISIBLE);
         copyBtn.setVisibility(View.INVISIBLE);
+        sendDataBtn.setVisibility(View.INVISIBLE);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait");
@@ -107,7 +109,22 @@ public class ImageViewActivity extends AppCompatActivity {
                     resultTv.setVisibility(View.VISIBLE);
                     copyBtn.setVisibility(View.VISIBLE);
                     shareBtn.setVisibility(View.VISIBLE);
+                    sendDataBtn.setVisibility(View.VISIBLE);
                     resultTv.setText(recognizedText);
+
+                    sendDataBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            String data = resultTv.getText().toString().trim();
+
+                            Intent intent = new Intent (ImageViewActivity.this, SpecifiqSearchActivity.class);
+                            intent.putExtra("data", data);
+                            startActivity(intent);
+
+                        }
+                    });
+
                     copyBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
