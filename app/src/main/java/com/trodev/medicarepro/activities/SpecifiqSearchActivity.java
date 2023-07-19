@@ -41,7 +41,7 @@ public class SpecifiqSearchActivity extends AppCompatActivity {
     private String lastKey = "";
     private LinearLayoutManager layoutManager;
 
-    private int pageSize = 5000;
+    private int pageSize = 20;
     private boolean isLoading = false; // Flag to prevent multiple simultaneous data loads
     private boolean isLastPage = false; // Flag to indicate if all data has been loaded
 
@@ -71,7 +71,9 @@ public class SpecifiqSearchActivity extends AppCompatActivity {
         dataRv.setLayoutManager(layoutManager);
         dataList = new ArrayList<>();
         filterDataList = new ArrayList<>();
-        adapter = new MedicineUserAdapter(filterDataList, this); // change data list, set filterDataList
+
+        // change data list, set filterDataList
+        adapter = new MedicineUserAdapter(filterDataList, this);
         dataRv.setAdapter(adapter);
 
         /*create function*/
