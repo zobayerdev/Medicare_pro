@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == id.nav_doctor) {
             startActivity(new Intent(MainActivity.this, DoctorActivity.class));
         } else if (itemId == id.nav_policy) {
-
+            startActivity(new Intent(MainActivity.this, PrivacyActivity.class));
         } else if (itemId == id.nav_contact) {
             Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show();
             final Dialog dialog = new Dialog(this);
