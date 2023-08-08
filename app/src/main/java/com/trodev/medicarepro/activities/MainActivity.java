@@ -128,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (itemId == id.nav_reminder) {
             startActivity(new Intent(MainActivity.this, MakeAlarmActivity.class));
+        } else if (itemId == id.nav_doctor) {
+            startActivity(new Intent(MainActivity.this, DoctorActivity.class));
         } else if (itemId == id.nav_policy) {
 
         } else if (itemId == id.nav_contact) {
