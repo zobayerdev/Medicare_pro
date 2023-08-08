@@ -245,6 +245,7 @@ public class ImageFragment extends Fragment {
                     PdfDocument pdfDocument = new PdfDocument();
 
                     for (int i = 0; i < imagesToPdfList.size(); i++) {
+
                         Uri imageToAddInPdfUri = imagesToPdfList.get(i).getImageUri();
 
                         try {
@@ -420,7 +421,9 @@ public class ImageFragment extends Fragment {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+
                 int itemId = menuItem.getItemId();
+
                 if (itemId == 1) {
                     Log.d(TAG, "onMenuItemClick: Camera is clicked, check if camera permissions are granted or not");
                     if (checkCameraPermission()) {
@@ -446,7 +449,9 @@ public class ImageFragment extends Fragment {
 
 
     private void pickImaageGallery() {
+
         Log.d(TAG, "pickImaageGallery: ");
+
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         galleryActivityResultLauncher.launch(intent);
@@ -454,6 +459,7 @@ public class ImageFragment extends Fragment {
     }
 
     private ActivityResultLauncher<Intent> galleryActivityResultLauncher = registerForActivityResult(
+
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override

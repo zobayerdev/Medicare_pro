@@ -23,6 +23,8 @@ public class MedicineData {
         this.expandable = false;
     }
 
+
+
     public String getBrand() {
         return brand;
     }

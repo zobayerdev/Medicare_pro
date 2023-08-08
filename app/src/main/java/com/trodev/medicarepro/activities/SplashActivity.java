@@ -24,6 +24,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 3000); // it's a 3 second time to show splash or motion
     }
 }

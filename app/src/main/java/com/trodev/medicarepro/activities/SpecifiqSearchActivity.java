@@ -36,12 +36,11 @@ public class SpecifiqSearchActivity extends AppCompatActivity {
     private List<MedicineData> dataList, filterDataList;
     private MedicineUserAdapter adapter;
     private DatabaseReference reference;
-
     private ProgressBar progressBar;
     private String lastKey = "";
     private LinearLayoutManager layoutManager;
 
-    private int pageSize = 20;
+    private int pageSize = 10;
     private boolean isLoading = false; // Flag to prevent multiple simultaneous data loads
     private boolean isLastPage = false; // Flag to indicate if all data has been loaded
 
@@ -65,6 +64,8 @@ public class SpecifiqSearchActivity extends AppCompatActivity {
 
         // get data from firebase database
         reference = FirebaseDatabase.getInstance().getReference().child("Medicine");
+        //
+
 
         /*set recyclerview on linearlayout*/
         layoutManager = new LinearLayoutManager(this);
@@ -75,6 +76,7 @@ public class SpecifiqSearchActivity extends AppCompatActivity {
         // change data list, set filterDataList
         adapter = new MedicineUserAdapter(filterDataList, this);
         dataRv.setAdapter(adapter);
+
 
         /*create function*/
         loadData();
@@ -238,9 +240,10 @@ public class SpecifiqSearchActivity extends AppCompatActivity {
 
                 } else {
 
-                    //  progressBar.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
                     dataRv.setVisibility(View.GONE);
                     isLoading = false;
+                    // reference.keepSynced(true);
                 }
             }
 

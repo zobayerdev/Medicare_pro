@@ -34,9 +34,13 @@ public class HomeFragment extends Fragment {
     private MedicineUserAdapter adapter;
     private DatabaseReference reference;
     private String lastKey = "";
-    private int pageSize = 10;
-    private boolean isLoading = false; // Flag to prevent multiple simultaneous data loads
-    private boolean isLastPage = false; // Flag to indicate if all data has been loaded
+    private int pageSize = 100;
+
+    // Flag to prevent multiple simultaneous data loads
+    private boolean isLoading = false;
+
+    // Flag to indicate if all data has been loaded
+    private boolean isLastPage = false;
     private LinearLayoutManager layoutManager;
     private SearchView searchView;
 
@@ -83,6 +87,7 @@ public class HomeFragment extends Fragment {
                         loadData();
                     }
                 }
+
             }
         });
 
@@ -180,6 +185,9 @@ public class HomeFragment extends Fragment {
                     progressBar.setVisibility(View.VISIBLE);
                     dataRv.setVisibility(View.GONE);
                     isLoading = false;
+
+                    // offline download data
+                    reference.keepSynced(true);
                 }
             }
 
