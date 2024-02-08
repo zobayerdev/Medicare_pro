@@ -1,6 +1,6 @@
 package com.trodev.medicarepro.activities;
 
-import static com.google.android.material.color.utilities.MaterialDynamicColors.error;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
